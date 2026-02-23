@@ -1,7 +1,3 @@
-'use strict';
-
-import './style.css';
-
 console.log(1223334555444);
 console.log(1223334555444);
 console.log(1223334555444);
