@@ -19,8 +19,18 @@
   "license": "ISC",
   "author": "Vadim kolpashchikov",
   "type": "module",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server",
+    "build": "rollup"
+  },
+  "devDependencies": {
+    "@eslint/css": "^0.14.1",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.0.1",
+    "eslint": "^10.0.1",
+    "globals": "^17.3.0",
+    "live-server": "^1.2.2",
+    "rollup": "^4.59.0"
   }
 }
