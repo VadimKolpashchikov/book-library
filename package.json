@@ -1,0 +1,26 @@
+{
+  "name": "book-library",
+  "version": "1.0.0",
+  "description": "book library project in pure js",
+  "keywords": [
+    "book",
+    "library",
+    "pure",
+    "js"
+  ],
+  "homepage": "https://github.com/VadimKolpashchikov/book-library#readme",
+  "bugs": {
+    "url": "https://github.com/VadimKolpashchikov/book-library/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VadimKolpashchikov/book-library.git"
+  },
+  "license": "ISC",
+  "author": "Vadim kolpashchikov",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
