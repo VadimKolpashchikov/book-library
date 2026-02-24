@@ -3,6 +3,10 @@ import Main from './views/main/Main.js';
 class App {
   routes = [{ path: '/', component: Main }];
 
+  appState = {
+    favorites: [],
+  };
+
   constructor() {
     this.route = this.route.bind(this);
     window.addEventListener('hashchange', this.route);
@@ -20,7 +24,7 @@ class App {
       view = this.routes[0];
     }
 
-    this.currentView = new view.component();
+    this.currentView = new view.component(this.appState);
     this.currentView.render();
   }
 }
