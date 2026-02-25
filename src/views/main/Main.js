@@ -1,3 +1,4 @@
+import { Header } from '../../components/header/Header.js';
 import { AbstractView } from '../../core/AbstractView.js';
 import onChange from 'on-change';
 
@@ -23,8 +24,13 @@ export default class Main extends AbstractView {
 
   render() {
     const main = document.createElement('div');
-    main.innerText = `Число книг ${this.appState.favorites.length}`;
     this.$app.innerHTML = '';
+    this.renderHeader();
     this.$app.append(main);
+  }
+
+  renderHeader() {
+    const header = new Header(this.appState).render();
+    this.$app.prepend(header);
   }
 }
