@@ -1,0 +1,33 @@
+.header {
+  background-color: var(--bg-bisque);
+}
+
+.header .row {
+  padding-block: 24px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu__counter {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 30px;
+  border: 1px solid currentColor;
+  border-radius: 2em;
+  padding: 0 10px;
+}
