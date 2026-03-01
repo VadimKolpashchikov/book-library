@@ -7,6 +7,11 @@ export class Search extends DivComponent {
     this.state = state;
   }
 
+  search() {
+    const value = this.el.querySelector('input').value.trim();
+    this.state.searchQuery = value;
+  }
+
   render() {
     this.el.classList.add('search');
 
@@ -37,6 +42,16 @@ export class Search extends DivComponent {
         </div>  
       </div>
 		`;
+
+    this.el
+      .querySelector('button')
+      .addEventListener('click', this.search.bind(this));
+
+    this.el.querySelector('input').addEventListener('keyup', (e) => {
+      if (e.code === 'Enter') {
+        this.search();
+      }
+    });
 
     return this.el;
   }
