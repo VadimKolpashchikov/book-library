@@ -1,3 +1,4 @@
+import { CardList } from '../../components/cardList/CardList.js';
 import { Header } from '../../components/header/Header.js';
 import { Search } from '../../components/search/Search.js';
 import { AbstractView } from '../../core/AbstractView.js';
@@ -6,6 +7,7 @@ import onChange from 'on-change';
 export default class Main extends AbstractView {
   state = {
     list: [],
+    numFound: 0,
     loading: false,
     searchQuery: undefined,
     offset: 0,
@@ -23,11 +25,19 @@ export default class Main extends AbstractView {
 
   appStateHook(path) {
     if (path === 'favorites') {
-      this.render();
+      this.$rerender();
     }
   }
 
   async stateHook(path) {
+    if (path === 'loading') {
+      this.$rerender();
+    }
+
+    if (path === 'list') {
+      this.$rerender();
+    }
+
     if (path === 'searchQuery') {
       const { searchQuery, offset } = this.state;
 
@@ -36,11 +46,12 @@ export default class Main extends AbstractView {
       this.state.loading = false;
 
       this.state.list = data.docs;
+      this.state.numFound = data.numFound ?? 0;
     }
   }
 
   async loadList(q, offset = 0) {
-    const result = fetch(
+    const result = await fetch(
       `https://openlibrary.org/search.json?q=${q}&offset=${offset}`,
     );
 
@@ -49,8 +60,11 @@ export default class Main extends AbstractView {
 
   render() {
     const main = document.createElement('div');
+    main.classList.add('main');
     this.$app.innerHTML = '';
+
     main.append(new Search(this.state).render());
+    main.append(new CardList(this.appState, this.state).render());
     this.renderHeader();
     this.$app.append(main);
   }

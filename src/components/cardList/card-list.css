@@ -1,0 +1,15 @@
+.card-list {
+  margin-top: 30px;
+}
+
+.card-list .row {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.card-list__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
