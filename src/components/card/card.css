@@ -26,12 +26,54 @@
   align-items: flex-start;
   flex-grow: 1;
   padding: 15px;
-  background: #121212;
+  min-height: 180px;
+  background: var(--black);
   color: var(--white);
 }
 
+.card__tag {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+card__name {
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.card__author {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
 .card__footer {
+  display: flex;
   justify-self: flex-end;
   padding-top: 20px;
   margin-top: auto;
+}
+
+.card__button-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid var(--white);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s all ease;
+}
+
+.card__button-add:hover {
+  transform: scale(1.05);
+}
+.card__button-add_active {
+  background-color: var(--white);
 }
