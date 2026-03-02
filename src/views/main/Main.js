@@ -21,6 +21,7 @@ export default class Main extends AbstractView {
     this.appState = onChange(this.appState, this.appStateHook.bind(this));
     this.state = onChange(this.state, this.stateHook.bind(this));
     this.setTitle('Поиск Книг');
+    this.loadList('random');
   }
 
   appStateHook(path) {
@@ -41,21 +42,20 @@ export default class Main extends AbstractView {
     if (path === 'searchQuery') {
       const { searchQuery, offset } = this.state;
 
-      this.state.loading = true;
-      const data = await this.loadList(searchQuery, offset);
-      this.state.loading = false;
-
-      this.state.list = data.docs;
-      this.state.numFound = data.numFound ?? 0;
+      this.loadList(searchQuery, offset);
     }
   }
 
   async loadList(q, offset = 0) {
+    this.state.loading = true;
     const result = await fetch(
       `https://openlibrary.org/search.json?q=${q}&offset=${offset}`,
     );
+    const data = await result.json();
+    this.state.loading = false;
 
-    return result.json();
+    this.state.list = data.docs;
+    this.state.numFound = data.numFound ?? 0;
   }
 
   render() {
