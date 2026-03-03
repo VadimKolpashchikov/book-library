@@ -20,6 +20,16 @@ export class Card extends DivComponent {
     return '/static/imgs/no-image.png';
   }
 
+  addToFavorites() {
+    this.appState.favorites.push(this.state);
+  }
+
+  deleteFromFavorites() {
+    this.appState.favorites = this.appState.favorites.filter(
+      ({ key }) => key !== this.state.key,
+    );
+  }
+
   render() {
     this.el.classList.add('card');
 
@@ -60,6 +70,16 @@ export class Card extends DivComponent {
 					</div>
 				</div>
 			`;
+
+    this.el.querySelector('.card__button-add').addEventListener('click', () => {
+      console.log(this.state);
+
+      if (isExistInFavorites) {
+        this.deleteFromFavorites();
+      } else {
+        this.addToFavorites();
+      }
+    });
 
     this.el.querySelector('img').addEventListener(
       'error',

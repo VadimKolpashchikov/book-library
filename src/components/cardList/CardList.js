@@ -13,28 +13,32 @@ export class CardList extends DivComponent {
   render() {
     this.el.classList.add('card-list');
 
-    let template = /*html*/ `
-      <h1>Найдено книг - ${this.state.numFound}</h1>
-    `;
-
-    if (this.state.list) {
-      const list = document.createElement('div');
-      list.classList.add('card-list__list');
-
-      for (const card of this.state.list) {
-        list.append(new Card(this.appState, card).render());
-      }
-
-      template += list.outerHTML;
-    }
-
     this.el.innerHTML = /*html*/ `
         <div class="container">
-          <div class="row">
-            ${this.state.loading ? new Loader().render().outerHTML : template}
-          </div>
+          <div class="row"></div>
         </div>
       `;
+
+    const row = this.el.querySelector('.row');
+
+    if (this.state.loading) {
+      row.append(new Loader().render());
+    } else {
+      row.innerHTML = /*html*/ `
+        <h1>Найдено книг - ${this.state.numFound}</h1>
+      `;
+
+      if (this.state.list) {
+        const list = document.createElement('div');
+        list.classList.add('card-list__list');
+
+        for (const card of this.state.list) {
+          list.append(new Card(this.appState, card).render());
+        }
+
+        row.append(list);
+      }
+    }
 
     return this.el;
   }
