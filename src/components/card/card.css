@@ -37,8 +37,8 @@
   line-height: 15px;
 }
 
-card__name {
-  margin-top: 4px;
+.card__name {
+  margin-top: 10px;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.1;
