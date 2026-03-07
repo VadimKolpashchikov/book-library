@@ -36,7 +36,6 @@ export class Search extends DivComponent {
 						<img 
 							src="/static/imgs/search-white.svg"
 							alt="search"
-							
 						/>
 					</button>
         </div>  

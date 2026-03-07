@@ -1,7 +1,11 @@
+import Favorites from './views/favorites/Favorites.js';
 import Main from './views/main/Main.js';
 
 class App {
-  routes = [{ path: '/', component: Main }];
+  routes = [
+    { path: '/', component: Main },
+    { path: '#favorites', component: Favorites },
+  ];
 
   appState = {
     favorites: [],

@@ -24,6 +24,11 @@ export default class Main extends AbstractView {
     this.loadList('random');
   }
 
+  destroy() {
+    onChange.unsubscribe(this.appState);
+    onChange.unsubscribe(this.state);
+  }
+
   appStateHook(path) {
     if (path === 'favorites') {
       this.$rerender();
@@ -61,6 +66,14 @@ export default class Main extends AbstractView {
   render() {
     const main = document.createElement('div');
     main.classList.add('main');
+    main.innerHTML = /*html*/ `
+        <div class="container">
+          <div class="row">
+						<h1>Найдено книг - ${this.state.numFound}</h1>
+					</div>
+        </div>
+      `;
+
     this.$app.innerHTML = '';
 
     main.append(new Search(this.state).render());
