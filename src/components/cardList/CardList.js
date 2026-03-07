@@ -23,21 +23,15 @@ export class CardList extends DivComponent {
 
     if (this.state.loading) {
       row.append(new Loader().render());
-    } else {
-      row.innerHTML = /*html*/ `
-        <h1>Найдено книг - ${this.state.numFound}</h1>
-      `;
+    } else if (this.state.list && this.state.list.length) {
+      const list = document.createElement('div');
+      list.classList.add('card-list__list');
 
-      if (this.state.list) {
-        const list = document.createElement('div');
-        list.classList.add('card-list__list');
-
-        for (const card of this.state.list) {
-          list.append(new Card(this.appState, card).render());
-        }
-
-        row.append(list);
+      for (const card of this.state.list) {
+        list.append(new Card(this.appState, card).render());
       }
+
+      row.append(list);
     }
 
     return this.el;

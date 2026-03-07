@@ -72,8 +72,6 @@ export class Card extends DivComponent {
 			`;
 
     this.el.querySelector('.card__button-add').addEventListener('click', () => {
-      console.log(this.state);
-
       if (isExistInFavorites) {
         this.deleteFromFavorites();
       } else {
